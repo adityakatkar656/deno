@@ -1,0 +1,1345 @@
+Q.1 : Get student namefirst with how many characters are there in their namefirst.
+
+Solution :
+
+mysql> select namefirst, length(namefirst) from student;
++-----------+-------------------+
+| namefirst | length(namefirst) |
++-----------+-------------------+
+| saleel    |                 6 |
+| omkar     |                 5 |
+| ulka      |                 4 |
+| rahul     |                 5 |
+| ruhan     |                 5 |
+| lala      |                 4 |
+| sharmin   |                 7 |
+| vrushali  |                 8 |
+| vasant    |                 6 |
+| nitish    |                 6 |
+| neel      |                 4 |
+| deep      |                 4 |
+| nrupali   |                 7 |
+| supriya   |                 7 |
+| bandish   |                 7 |
+| sangita   |                 7 |
+| sangita   |                 7 |
+| rahul     |                 5 |
+| bhavin    |                 6 |
+| kaushal   |                 7 |
+| pankaj    |                 6 |
+| rajan     |                 5 |
+| bhavin    |                 6 |
+| mukesh    |                 6 |
+| dilu      |                 4 |
+| sonam     |                 5 |
+| rohit     |                 5 |
+| raj       |                 3 |
++-----------+-------------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.2 : Get student details whose namefirst is having 4 characters only.
+
+Solution :
+
+mysql> select namefirst from student where length(namefirst)=4;
++-----------+
+| namefirst |
++-----------+
+| ulka      |
+| lala      |
+| neel      |
+| deep      |
+| dilu      |
++-----------+
+5 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.3 :
+
+Solution :
+
+mysql> SELECT namefirst,  ASCII(SUBSTRING(namefirst, 3, 1)) AS 'ASCII Value of 3rd Character' FROM student;
++-----------+------------------------------+
+| namefirst | ASCII Value of 3rd Character |
++-----------+------------------------------+
+| saleel    |                          108 |
+| omkar     |                          107 |
+| ulka      |                          107 |
+| rahul     |                          104 |
+| ruhan     |                          104 |
+| lala      |                          108 |
+| sharmin   |                           97 |
+| vrushali  |                          117 |
+| vasant    |                          115 |
+| nitish    |                          116 |
+| neel      |                          101 |
+| deep      |                          101 |
+| nrupali   |                          117 |
+| supriya   |                          112 |
+| bandish   |                          110 |
+| sangita   |                          110 |
+| sangita   |                          110 |
+| rahul     |                          104 |
+| bhavin    |                           97 |
+| kaushal   |                          117 |
+| pankaj    |                          110 |
+| rajan     |                          106 |
+| bhavin    |                           97 |
+| mukesh    |                          107 |
+| dilu      |                          108 |
+| sonam     |                          110 |
+| rohit     |                          104 |
+| raj       |                          106 |
++-----------+------------------------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.4 : Get namefirst and namelast in lowercase.
+
+Solution :
+
+mysql> SELECT lower(namefirst), lower(namelast) FROM student;
++------------------+-----------------+
+| lower(namefirst) | lower(namelast) |
++------------------+-----------------+
+| saleel           | bagde           |
+| omkar            | rokde           |
+| ulka             | joshi           |
+| rahul            | patil           |
+| ruhan            | bagde           |
+| lala             | prasad          |
+| sharmin          | bagde           |
+| vrushali         | bagde           |
+| vasant           | khande          |
+| nitish           | patil           |
+| neel             | save            |
+| deep             | save            |
+| nrupali          | save            |
+| supriya          | karnik          |
+| bandish          | karnik          |
+| sangita          | karnik          |
+| sangita          | menon           |
+| rahul            | shah            |
+| bhavin           | patel           |
+| kaushal          | patil           |
+| pankaj           | gandhi          |
+| rajan            | patel           |
+| bhavin           | patel           |
+| mukesh           | bhavsar         |
+| dilu             | khande          |
+| sonam            | khan            |
+| rohit            | patil           |
+| raj              | bubber          |
++------------------+-----------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.5 : Get (namefirst, namelast, and emailID) all 7 letter emailID.
+
+Solution :
+
+mysql> SELECT namefirst, namelast, emailid FROM student where length(emailid)=22;
++-----------+----------+------------------------+
+| namefirst | namelast | emailid                |
++-----------+----------+------------------------+
+| saleel    | bagde    | saleel.bagde@gmail.com |
+| nitish    | patil    | nitish.patil@gmail.com |
+| nrupali   | save     | nrupali.save@gmail.com |
+| bhavin    | patel    | bhavin.patel@gmail.com |
+| bhavin    | patel    | bhavin.patel@gmail.com |
++-----------+----------+------------------------+
+5 rows in set (0.01 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.6 : Get(namefirst, namelast and first 3 letters of namefirst) for all students.
+
+Solution :
+
+mysql> SELECT namefirst, namelast, substring(namefirst,1,3) FROM student;
++-----------+----------+--------------------------+
+| namefirst | namelast | substring(namefirst,1,3) |
++-----------+----------+--------------------------+
+| saleel    | bagde    | sal                      |
+| omkar     | rokde    | omk                      |
+| ulka      | joshi    | ulk                      |
+| rahul     | patil    | rah                      |
+| ruhan     | bagde    | ruh                      |
+| lala      | prasad   | lal                      |
+| sharmin   | bagde    | sha                      |
+| vrushali  | bagde    | vru                      |
+| vasant    | khande   | vas                      |
+| nitish    | patil    | nit                      |
+| neel      | save     | nee                      |
+| deep      | save     | dee                      |
+| nrupali   | save     | nru                      |
+| supriya   | karnik   | sup                      |
+| bandish   | karnik   | ban                      |
+| sangita   | karnik   | san                      |
+| sangita   | menon    | san                      |
+| rahul     | shah     | rah                      |
+| bhavin    | patel    | bha                      |
+| kaushal   | patil    | kau                      |
+| pankaj    | gandhi   | pan                      |
+| rajan     | patel    | raj                      |
+| bhavin    | patel    | bha                      |
+| mukesh    | bhavsar  | muk                      |
+| dilu      | khande   | dil                      |
+| sonam     | khan     | son                      |
+| rohit     | patil    | roh                      |
+| raj       | bubber   | raj                      |
++-----------+----------+--------------------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.7: Get(namefirst, namelast and last 3 letters of namefirst) for all students.
+
+Solution :
+
+mysql> SELECT namefirst, namelast, substring(namefirst,-3) FROM student;
++-----------+----------+-------------------------+
+| namefirst | namelast | substring(namefirst,-3) |
++-----------+----------+-------------------------+
+| saleel    | bagde    | eel                     |
+| omkar     | rokde    | kar                     |
+| ulka      | joshi    | lka                     |
+| rahul     | patil    | hul                     |
+| ruhan     | bagde    | han                     |
+| lala      | prasad   | ala                     |
+| sharmin   | bagde    | min                     |
+| vrushali  | bagde    | ali                     |
+| vasant    | khande   | ant                     |
+| nitish    | patil    | ish                     |
+| neel      | save     | eel                     |
+| deep      | save     | eep                     |
+| nrupali   | save     | ali                     |
+| supriya   | karnik   | iya                     |
+| bandish   | karnik   | ish                     |
+| sangita   | karnik   | ita                     |
+| sangita   | menon    | ita                     |
+| rahul     | shah     | hul                     |
+| bhavin    | patel    | vin                     |
+| kaushal   | patil    | hal                     |
+| pankaj    | gandhi   | kaj                     |
+| rajan     | patel    | jan                     |
+| bhavin    | patel    | vin                     |
+| mukesh    | bhavsar  | esh                     |
+| dilu      | khande   | ilu                     |
+| sonam     | khan     | nam                     |
+| rohit     | patil    | hit                     |
+| raj       | bubber   | raj                     |
++-----------+----------+-------------------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.8 : Get all student(phone number) whose phone number starts with 70.
+
+Solution :
+
+mysql> SELECT number FROM student_phone where substring(number,1,2)=70;
++------------+
+| number     |
++------------+
+| 7032300034 |
+| 7032300039 |
+| 7032300050 |
+| 7032300027 |
+| 7032300001 |
+| 7032300079 |
+| 7032300081 |
+| 7032300054 |
+| 7032300059 |
+| 7032300086 |
+| 7032300082 |
+| 7032300042 |
+| 7032300055 |
+| 7032300013 |
+| 7032300099 |
+| 7032300023 |
+| 7032300084 |
+| 7032300011 |
+| 7032300066 |
+| 7032300096 |
+| 7032300001 |
++------------+
+21 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.9 :Get student details of first 5 students.
+
+Solution :
+
+mysql> select * from student limit 5;
++----+-----------+----------+------------+------------------------+
+| ID | namefirst | namelast | DOB        | emailID                |
++----+-----------+----------+------------+------------------------+
+|  1 | saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com |
+|  2 | omkar     | rokde    | 1969-10-25 | omkar.rakde@gmail.com  |
+|  3 | ulka      | joshi    | 1970-10-25 | ulka.joshi@gmail.com   |
+|  4 | rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com  |
+|  5 | ruhan     | bagde    | 1984-01-12 | ruhan.bagde@gmail.com  |
++----+-----------+----------+------------+------------------------+
+5 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.10 : Get student details of last 5 students.
+
+Solution :
+
+mysql> select * from student order by id desc limit 5;
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+| 28 | raj       | bubber   | 1982-02-28 | raj.bubber@gmail.com     |
+| 27 | rohit     | patil    | 1976-12-31 | rohit.patil@gmail.com    |
+| 26 | sonam     | khan     | 1972-05-13 | sonam.khan@gmail.com     |
+| 25 | dilu      | khande   | 1982-07-30 | dilu.khande@gmail.com    |
+| 24 | mukesh    | bhavsar  | 1982-07-30 | mukesh.bhavsar@gmail.com |
++----+-----------+----------+------------+--------------------------+
+5 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.11 : Get student details in ascending order of namefirst.
+
+Solution :
+
+mysql> select namefirst from student order by namefirst asc;
++-----------+
+| namefirst |
++-----------+
+| bandish   |
+| bhavin    |
+| bhavin    |
+| deep      |
+| dilu      |
+| kaushal   |
+| lala      |
+| mukesh    |
+| neel      |
+| nitish    |
+| nrupali   |
+| omkar     |
+| pankaj    |
+| rahul     |
+| rahul     |
+| raj       |
+| rajan     |
+| rohit     |
+| ruhan     |
+| saleel    |
+| sangita   |
+| sangita   |
+| sharmin   |
+| sonam     |
+| supriya   |
+| ulka      |
+| vasant    |
+| vrushali  |
++-----------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.12 : Get student details in descending order of namefirst.
+
+Solution :
+
+mysql> select namefirst from student order by namefirst desc;
++-----------+
+| namefirst |
++-----------+
+| vrushali  |
+| vasant    |
+| ulka      |
+| supriya   |
+| sonam     |
+| sharmin   |
+| sangita   |
+| sangita   |
+| saleel    |
+| ruhan     |
+| rohit     |
+| rajan     |
+| raj       |
+| rahul     |
+| rahul     |
+| pankaj    |
+| omkar     |
+| nrupali   |
+| nitish    |
+| neel      |
+| mukesh    |
+| lala      |
+| kaushal   |
+| dilu      |
+| deep      |
+| bhavin    |
+| bhavin    |
+| bandish   |
++-----------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.13 : Get (student id, namefirst, namelast, dob, and emailID) for all students whose length of email id is more than 20 characters.
+
+Solution :
+
+mysql> select * from student where length(emailid)>20;
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+|  1 | saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com   |
+|  2 | omkar     | rokde    | 1969-10-25 | omkar.rakde@gmail.com    |
+|  4 | rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com    |
+|  5 | ruhan     | bagde    | 1984-01-12 | ruhan.bagde@gmail.com    |
+|  6 | lala      | prasad   | 1980-12-01 | lala.prasad@gmail.com    |
+|  7 | sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com  |
+|  8 | vrushali  | bagde    | 1984-12-29 | vrushali.bagde@gmail.com |
+|  9 | vasant    | khande   | 1992-10-26 | vasant.khande@gmail.com  |
+| 10 | nitish    | patil    | 1990-10-26 | nitish.patil@gmail.com   |
+| 13 | nrupali   | save     | 1981-12-01 | nrupali.save@gmail.com   |
+| 14 | supriya   | karnik   | 1983-12-15 | supriya.karnik@gmail.com |
+| 15 | bandish   | karnik   | 1987-12-30 | bandish.karnik@gmail.com |
+| 16 | sangita   | karnik   | 1990-12-01 | sangita.karnik@gmail.com |
+| 17 | sangita   | menon    | 1989-10-26 | sangita.menon@gmail.com  |
+| 19 | bhavin    | patel    | 1983-11-13 | bhavin.patel@gmail.com   |
+| 20 | kaushal   | patil    | 1982-07-30 | kaushal.patil@gmail.com  |
+| 21 | pankaj    | gandhi   | 1982-07-30 | pankaj.gandhi@gmail.com  |
+| 22 | rajan     | patel    | 1982-07-30 | rajan.patel@gmail.com    |
+| 23 | bhavin    | patel    | 1982-07-30 | bhavin.patel@gmail.com   |
+| 24 | mukesh    | bhavsar  | 1982-07-30 | mukesh.bhavsar@gmail.com |
+| 25 | dilu      | khande   | 1982-07-30 | dilu.khande@gmail.com    |
+| 27 | rohit     | patil    | 1976-12-31 | rohit.patil@gmail.com    |
++----+-----------+----------+------------+--------------------------+
+22 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.14 : Combine to display student namefirst and namelast.
+
+Solution :
+
+mysql> select concat(namefirst, " ",namelast) AS Full_Name from student;
++----------------+
+| Full_Name      |
++----------------+
+| saleel bagde   |
+| omkar rokde    |
+| ulka joshi     |
+| rahul patil    |
+| ruhan bagde    |
+| lala prasad    |
+| sharmin bagde  |
+| vrushali bagde |
+| vasant khande  |
+| nitish patil   |
+| neel save      |
+| deep save      |
+| nrupali save   |
+| supriya karnik |
+| bandish karnik |
+| sangita karnik |
+| sangita menon  |
+| rahul shah     |
+| bhavin patel   |
+| kaushal patil  |
+| pankaj gandhi  |
+| rajan patel    |
+| bhavin patel   |
+| mukesh bhavsar |
+| dilu khande    |
+| sonam khan     |
+| rohit patil    |
+| raj bubber     |
++----------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.15 : Write a query to display the following output for all student. If (namefirst, namelast or emailID) is null then replace it with a blank space.
+
+Solution :
+
+mysql> select ifnull(namefirst," ") AS FIRST, ifnull(namelast," ") AS LAST, ifnull(emailid," ")AS EMAIL from student;
++----------+---------+--------------------------+
+| FIRST    | LAST    | EMAIL                    |
++----------+---------+--------------------------+
+| saleel   | bagde   | saleel.bagde@gmail.com   |
+| omkar    | rokde   | omkar.rakde@gmail.com    |
+| ulka     | joshi   | ulka.joshi@gmail.com     |
+| rahul    | patil   | rahul.patil@gmail.com    |
+| ruhan    | bagde   | ruhan.bagde@gmail.com    |
+| lala     | prasad  | lala.prasad@gmail.com    |
+| sharmin  | bagde   | sharmin.bagde@gmail.com  |
+| vrushali | bagde   | vrushali.bagde@gmail.com |
+| vasant   | khande  | vasant.khande@gmail.com  |
+| nitish   | patil   | nitish.patil@gmail.com   |
+| neel     | save    | neel.save@gmail.com      |
+| deep     | save    | deep.save@gmail.com      |
+| nrupali  | save    | nrupali.save@gmail.com   |
+| supriya  | karnik  | supriya.karnik@gmail.com |
+| bandish  | karnik  | bandish.karnik@gmail.com |
+| sangita  | karnik  | sangita.karnik@gmail.com |
+| sangita  | menon   | sangita.menon@gmail.com  |
+| rahul    | shah    | rahul.shah@gmail.com     |
+| bhavin   | patel   | bhavin.patel@gmail.com   |
+| kaushal  | patil   | kaushal.patil@gmail.com  |
+| pankaj   | gandhi  | pankaj.gandhi@gmail.com  |
+| rajan    | patel   | rajan.patel@gmail.com    |
+| bhavin   | patel   | bhavin.patel@gmail.com   |
+| mukesh   | bhavsar | mukesh.bhavsar@gmail.com |
+| dilu     | khande  | dilu.khande@gmail.com    |
+| sonam    | khan    | sonam.khan@gmail.com     |
+| rohit    | patil   | rohit.patil@gmail.com    |
+| raj      | bubber  | raj.bubber@gmail.com     |
++----------+---------+--------------------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.16 : Get student namefirst and namelast in upper case.
+
+Solution :
+
+mysql> select upper(namefirst), upper(namelast) from student;
++------------------+-----------------+
+| upper(namefirst) | upper(namelast) |
++------------------+-----------------+
+| SALEEL           | BAGDE           |
+| OMKAR            | ROKDE           |
+| ULKA             | JOSHI           |
+| RAHUL            | PATIL           |
+| RUHAN            | BAGDE           |
+| LALA             | PRASAD          |
+| SHARMIN          | BAGDE           |
+| VRUSHALI         | BAGDE           |
+| VASANT           | KHANDE          |
+| NITISH           | PATIL           |
+| NEEL             | SAVE            |
+| DEEP             | SAVE            |
+| NRUPALI          | SAVE            |
+| SUPRIYA          | KARNIK          |
+| BANDISH          | KARNIK          |
+| SANGITA          | KARNIK          |
+| SANGITA          | MENON           |
+| RAHUL            | SHAH            |
+| BHAVIN           | PATEL           |
+| KAUSHAL          | PATIL           |
+| PANKAJ           | GANDHI          |
+| RAJAN            | PATEL           |
+| BHAVIN           | PATEL           |
+| MUKESH           | BHAVSAR         |
+| DILU             | KHANDE          |
+| SONAM            | KHAN            |
+| ROHIT            | PATIL           |
+| RAJ              | BUBBER          |
++------------------+-----------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.17 : Get student namefirst and namelast in lower case.
+
+Solution :
+
+mysql> select lower(namefirst), lower(namelast) from student;
++------------------+-----------------+
+| lower(namefirst) | lower(namelast) |
++------------------+-----------------+
+| saleel           | bagde           |
+| omkar            | rokde           |
+| ulka             | joshi           |
+| rahul            | patil           |
+| ruhan            | bagde           |
+| lala             | prasad          |
+| sharmin          | bagde           |
+| vrushali         | bagde           |
+| vasant           | khande          |
+| nitish           | patil           |
+| neel             | save            |
+| deep             | save            |
+| nrupali          | save            |
+| supriya          | karnik          |
+| bandish          | karnik          |
+| sangita          | karnik          |
+| sangita          | menon           |
+| rahul            | shah            |
+| bhavin           | patel           |
+| kaushal          | patil           |
+| pankaj           | gandhi          |
+| rajan            | patel           |
+| bhavin           | patel           |
+| mukesh           | bhavsar         |
+| dilu             | khande          |
+| sonam            | khan            |
+| rohit            | patil           |
+| raj              | bubber          |
++------------------+-----------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.18 : Get student firstname and lastname in reverse order.
+
+Solution :
+
+mysql> select namefirst, namelast, reverse(namefirst), reverse(namelast) from student;
++-----------+----------+--------------------+-------------------+
+| namefirst | namelast | reverse(namefirst) | reverse(namelast) |
++-----------+----------+--------------------+-------------------+
+| saleel    | bagde    | leelas             | edgab             |
+| omkar     | rokde    | rakmo              | edkor             |
+| ulka      | joshi    | aklu               | ihsoj             |
+| rahul     | patil    | luhar              | litap             |
+| ruhan     | bagde    | nahur              | edgab             |
+| lala      | prasad   | alal               | dasarp            |
+| sharmin   | bagde    | nimrahs            | edgab             |
+| vrushali  | bagde    | ilahsurv           | edgab             |
+| vasant    | khande   | tnasav             | ednahk            |
+| nitish    | patil    | hsitin             | litap             |
+| neel      | save     | leen               | evas              |
+| deep      | save     | peed               | evas              |
+| nrupali   | save     | ilapurn            | evas              |
+| supriya   | karnik   | ayirpus            | kinrak            |
+| bandish   | karnik   | hsidnab            | kinrak            |
+| sangita   | karnik   | atignas            | kinrak            |
+| sangita   | menon    | atignas            | nonem             |
+| rahul     | shah     | luhar              | hahs              |
+| bhavin    | patel    | nivahb             | letap             |
+| kaushal   | patil    | lahsuak            | litap             |
+| pankaj    | gandhi   | jaknap             | ihdnag            |
+| rajan     | patel    | najar              | letap             |
+| bhavin    | patel    | nivahb             | letap             |
+| mukesh    | bhavsar  | hsekum             | rasvahb           |
+| dilu      | khande   | ulid               | ednahk            |
+| sonam     | khan     | manos              | nahk              |
+| rohit     | patil    | tihor              | litap             |
+| raj       | bubber   | jar                | rebbub            |
++-----------+----------+--------------------+-------------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.19 : Get first 4 letters of student namefirst.
+
+Solution :
+
+mysql> select namefirst,  substring(namefirst,1,4) from student;
++-----------+--------------------------+
+| namefirst | substring(namefirst,1,4) |
++-----------+--------------------------+
+| saleel    | sale                     |
+| omkar     | omka                     |
+| ulka      | ulka                     |
+| rahul     | rahu                     |
+| ruhan     | ruha                     |
+| lala      | lala                     |
+| sharmin   | shar                     |
+| vrushali  | vrus                     |
+| vasant    | vasa                     |
+| nitish    | niti                     |
+| neel      | neel                     |
+| deep      | deep                     |
+| nrupali   | nrup                     |
+| supriya   | supr                     |
+| bandish   | band                     |
+| sangita   | sang                     |
+| sangita   | sang                     |
+| rahul     | rahu                     |
+| bhavin    | bhav                     |
+| kaushal   | kaus                     |
+| pankaj    | pank                     |
+| rajan     | raja                     |
+| bhavin    | bhav                     |
+| mukesh    | muke                     |
+| dilu      | dilu                     |
+| sonam     | sona                     |
+| rohit     | rohi                     |
+| raj       | raj                      |
++-----------+--------------------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.20 : Get second letter of student namefirst to second last letter of student namefirst.
+
+Solution :
+
+mysql> select namefirst,  substring(namefirst,2, length(namefirst)-2 ) AS Name_between_2 from student;
++-----------+----------------+
+| namefirst | Name_between_2 |
++-----------+----------------+
+| saleel    | alee           |
+| omkar     | mka            |
+| ulka      | lk             |
+| rahul     | ahu            |
+| ruhan     | uha            |
+| lala      | al             |
+| sharmin   | harmi          |
+| vrushali  | rushal         |
+| vasant    | asan           |
+| nitish    | itis           |
+| neel      | ee             |
+| deep      | ee             |
+| nrupali   | rupal          |
+| supriya   | upriy          |
+| bandish   | andis          |
+| sangita   | angit          |
+| sangita   | angit          |
+| rahul     | ahu            |
+| bhavin    | havi           |
+| kaushal   | ausha          |
+| pankaj    | anka           |
+| rajan     | aja            |
+| bhavin    | havi           |
+| mukesh    | ukes           |
+| dilu      | il             |
+| sonam     | ona            |
+| rohit     | ohi            |
+| raj       | a              |
++-----------+----------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.21 : Get ASCII character of student namefirst.
+
+Solution :
+
+mysql> select namefirst,  ASCII(namefirst) from student;
++-----------+------------------+
+| namefirst | ASCII(namefirst) |
++-----------+------------------+
+| saleel    |              115 |
+| omkar     |              111 |
+| ulka      |              117 |
+| rahul     |              114 |
+| ruhan     |              114 |
+| lala      |              108 |
+| sharmin   |              115 |
+| vrushali  |              118 |
+| vasant    |              118 |
+| nitish    |              110 |
+| neel      |              110 |
+| deep      |              100 |
+| nrupali   |              110 |
+| supriya   |              115 |
+| bandish   |               98 |
+| sangita   |              115 |
+| sangita   |              115 |
+| rahul     |              114 |
+| bhavin    |               98 |
+| kaushal   |              107 |
+| pankaj    |              112 |
+| rajan     |              114 |
+| bhavin    |               98 |
+| mukesh    |              109 |
+| dilu      |              100 |
+| sonam     |              115 |
+| rohit     |              114 |
+| raj       |              114 |
++-----------+------------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.22 : Get first 5 letter of the students’ namefirst.
+
+Solution :
+
+mysql> select namefirst,  substring(namefirst,1,5) AS Students_5Letters from student;
++-----------+-------------------+
+| namefirst | Students_5Letters |
++-----------+-------------------+
+| saleel    | salee             |
+| omkar     | omkar             |
+| ulka      | ulka              |
+| rahul     | rahul             |
+| ruhan     | ruhan             |
+| lala      | lala              |
+| sharmin   | sharm             |
+| vrushali  | vrush             |
+| vasant    | vasan             |
+| nitish    | nitis             |
+| neel      | neel              |
+| deep      | deep              |
+| nrupali   | nrupa             |
+| supriya   | supri             |
+| bandish   | bandi             |
+| sangita   | sangi             |
+| sangita   | sangi             |
+| rahul     | rahul             |
+| bhavin    | bhavi             |
+| kaushal   | kaush             |
+| pankaj    | panka             |
+| rajan     | rajan             |
+| bhavin    | bhavi             |
+| mukesh    | mukes             |
+| dilu      | dilu              |
+| sonam     | sonam             |
+| rohit     | rohit             |
+| raj       | raj               |
++-----------+-------------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.23 : Print phone number of all student in the given format 7032300034*****.
+
+Solution :
+
+mysql> select number, RPAD(number,15,'*') from student_phone;
++------------+---------------------+
+| number     | RPAD(number,15,'*') |
++------------+---------------------+
+| 7032300034 | 7032300034*****     |
+| 7032300039 | 7032300039*****     |
+| 7032300050 | 7032300050*****     |
+| 7032300027 | 7032300027*****     |
+| 7032300001 | 7032300001*****     |
+| 7032300079 | 7032300079*****     |
+| 7032300081 | 7032300081*****     |
+| 7032300054 | 7032300054*****     |
+| 7032300059 | 7032300059*****     |
+| 7032300086 | 7032300086*****     |
+| 7032300082 | 7032300082*****     |
+| 7032300042 | 7032300042*****     |
+| 7032300055 | 7032300055*****     |
+| 7032300013 | 7032300013*****     |
+| 7032300099 | 7032300099*****     |
+| 7032300023 | 7032300023*****     |
+| 7032300084 | 7032300084*****     |
+| 7032300011 | 7032300011*****     |
+| 7032300066 | 7032300066*****     |
+| 7032300096 | 7032300096*****     |
+| 7132300034 | 7132300034*****     |
+| 7132300039 | 7132300039*****     |
+| 7132300050 | 7132300050*****     |
+| 7132300027 | 7132300027*****     |
+| 7032300001 | 7032300001*****     |
+| 7132300079 | 7132300079*****     |
+| 7132300081 | 7132300081*****     |
+| 7132300054 | 7132300054*****     |
+| 7132300059 | 7132300059*****     |
+| 7132300086 | 7132300086*****     |
+| 7132300082 | 7132300082*****     |
+| 7132300042 | 7132300042*****     |
+| 7132300055 | 7132300055*****     |
+| 7132300055 | 7132300055*****     |
+| 7132300055 | 7132300055*****     |
+| 7134567123 | 7134567123*****     |
+| 7156567123 | 7156567123*****     |
+| 7156567134 | 7156567134*****     |
+| 7156563423 | 7156563423*****     |
+| 7156567183 | 7156567183*****     |
+| 7146566412 | 7146566412*****     |
++------------+---------------------+
+41 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.24 : Get all students whose DOB is in the month of ‘October’.
+
+Solution :
+
+mysql> select * from student where date_format(dob,'%M') = 'October';
++----+-----------+----------+------------+-------------------------+
+| ID | namefirst | namelast | DOB        | emailID                 |
++----+-----------+----------+------------+-------------------------+
+|  2 | omkar     | rokde    | 1969-10-25 | omkar.rakde@gmail.com   |
+|  3 | ulka      | joshi    | 1970-10-25 | ulka.joshi@gmail.com    |
+|  4 | rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com   |
+|  9 | vasant    | khande   | 1992-10-26 | vasant.khande@gmail.com |
+| 10 | nitish    | patil    | 1990-10-26 | nitish.patil@gmail.com  |
+| 11 | neel      | save     | 1975-10-30 | neel.save@gmail.com     |
+| 17 | sangita   | menon    | 1989-10-26 | sangita.menon@gmail.com |
++----+-----------+----------+------------+-------------------------+
+7 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.25: Get all students whose DOB is in the month of ‘January’ or ‘December’.
+
+Solution :
+
+mysql> select * from student where date_format(dob,'%M') IN ('january', 'December');
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+|  5 | ruhan     | bagde    | 1984-01-12 | ruhan.bagde@gmail.com    |
+|  6 | lala      | prasad   | 1980-12-01 | lala.prasad@gmail.com    |
+|  7 | sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com  |
+|  8 | vrushali  | bagde    | 1984-12-29 | vrushali.bagde@gmail.com |
+| 13 | nrupali   | save     | 1981-12-01 | nrupali.save@gmail.com   |
+| 14 | supriya   | karnik   | 1983-12-15 | supriya.karnik@gmail.com |
+| 15 | bandish   | karnik   | 1987-12-30 | bandish.karnik@gmail.com |
+| 16 | sangita   | karnik   | 1990-12-01 | sangita.karnik@gmail.com |
+| 27 | rohit     | patil    | 1976-12-31 | rohit.patil@gmail.com    |
++----+-----------+----------+------------+--------------------------+
+9 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.26 : Get all faculty who were born on ‘Sunday’
+
+Solution :
+
+mysql> select * from faculty where dayname(dob) = 'sunday';
+Empty set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.27 :Print current date and time.
+
+Solution :
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2025-03-31 20:14:02 |
++---------------------+
+1 row in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.28 : Extract month from the current date.
+
+Solution :
+
+mysql> select date_format(now(),'%M');
++-------------------------+
+| date_format(now(),'%M') |
++-------------------------+
+| March                   |
++-------------------------+
+1 row in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.29 : Extract year from the current date.
+
+Solution :
+
+mysql> SELECT EXTRACT(YEAR_MONTH FROM NOW()) ;
++--------------------------------+
+| EXTRACT(YEAR_MONTH FROM NOW()) |
++--------------------------------+
+|                         202503 |
++--------------------------------+
+1 row in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.30 : Get all students whose DOB is in the year 1984 in ascending order of namefirst.
+
+Solution :
+
+mysql> SELECT * from student where date_format(dob,'%Y')=1984 order by namefirst asc;
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+|  5 | ruhan     | bagde    | 1984-01-12 | ruhan.bagde@gmail.com    |
+|  1 | saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com   |
+|  8 | vrushali  | bagde    | 1984-12-29 | vrushali.bagde@gmail.com |
++----+-----------+----------+------------+--------------------------+
+3 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.31 : Get all students whose DOB is in the 4 quarter of a year.
+
+Solution :
+
+mysql> SELECT * from student where MONTH(dob) IN (10,11,12) ;
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+|  2 | omkar     | rokde    | 1969-10-25 | omkar.rakde@gmail.com    |
+|  3 | ulka      | joshi    | 1970-10-25 | ulka.joshi@gmail.com     |
+|  4 | rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com    |
+|  6 | lala      | prasad   | 1980-12-01 | lala.prasad@gmail.com    |
+|  7 | sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com  |
+|  8 | vrushali  | bagde    | 1984-12-29 | vrushali.bagde@gmail.com |
+|  9 | vasant    | khande   | 1992-10-26 | vasant.khande@gmail.com  |
+| 10 | nitish    | patil    | 1990-10-26 | nitish.patil@gmail.com   |
+| 11 | neel      | save     | 1975-10-30 | neel.save@gmail.com      |
+| 12 | deep      | save     | 1986-11-30 | deep.save@gmail.com      |
+| 13 | nrupali   | save     | 1981-12-01 | nrupali.save@gmail.com   |
+| 14 | supriya   | karnik   | 1983-12-15 | supriya.karnik@gmail.com |
+| 15 | bandish   | karnik   | 1987-12-30 | bandish.karnik@gmail.com |
+| 16 | sangita   | karnik   | 1990-12-01 | sangita.karnik@gmail.com |
+| 17 | sangita   | menon    | 1989-10-26 | sangita.menon@gmail.com  |
+| 19 | bhavin    | patel    | 1983-11-13 | bhavin.patel@gmail.com   |
+| 27 | rohit     | patil    | 1976-12-31 | rohit.patil@gmail.com    |
++----+-----------+----------+------------+--------------------------+
+17 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.32 : Get all students whose DOB is in the 43rd week of a year.
+
+Solution :
+
+mysql> SELECT * from student where weekofyear(dob)=43 ;
++----+-----------+----------+------------+-------------------------+
+| ID | namefirst | namelast | DOB        | emailID                 |
++----+-----------+----------+------------+-------------------------+
+|  2 | omkar     | rokde    | 1969-10-25 | omkar.rakde@gmail.com   |
+|  3 | ulka      | joshi    | 1970-10-25 | ulka.joshi@gmail.com    |
+|  4 | rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com   |
+| 10 | nitish    | patil    | 1990-10-26 | nitish.patil@gmail.com  |
+| 17 | sangita   | menon    | 1989-10-26 | sangita.menon@gmail.com |
++----+-----------+----------+------------+-------------------------+
+5 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.33 : Get all students whose DOB is in between 10 and 19 day.
+
+Solution :
+
+mysql> SELECT * from student where dayofmonth(dob) BETWEEN 10 AND 19 ;
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+|  1 | saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com   |
+|  5 | ruhan     | bagde    | 1984-01-12 | ruhan.bagde@gmail.com    |
+|  7 | sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com  |
+| 14 | supriya   | karnik   | 1983-12-15 | supriya.karnik@gmail.com |
+| 18 | rahul     | shah     | 1982-06-12 | rahul.shah@gmail.com     |
+| 19 | bhavin    | patel    | 1983-11-13 | bhavin.patel@gmail.com   |
+| 26 | sonam     | khan     | 1972-05-13 | sonam.khan@gmail.com     |
++----+-----------+----------+------------+--------------------------+
+7 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.34: Generate the random number between 1 to 100
+
+Solution :
+
+mysql> SELECT ROUND(RAND() * 100);
++---------------------+
+| ROUND(RAND() * 100) |
++---------------------+
+|                   8 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT ROUND(RAND() * 100);
++---------------------+
+| ROUND(RAND() * 100) |
++---------------------+
+|                  41 |
++---------------------+
+1 row in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.35 : Display the 5 character of namefirst column from student table.
+
+Solution :
+
+mysql> select namefirst, substring(namefirst,1,5)AS 5_Char_Name from student;
++-----------+-------------+
+| namefirst | 5_Char_Name |
++-----------+-------------+
+| saleel    | salee       |
+| omkar     | omkar       |
+| ulka      | ulka        |
+| rahul     | rahul       |
+| ruhan     | ruhan       |
+| lala      | lala        |
+| sharmin   | sharm       |
+| vrushali  | vrush       |
+| vasant    | vasan       |
+| nitish    | nitis       |
+| neel      | neel        |
+| deep      | deep        |
+| nrupali   | nrupa       |
+| supriya   | supri       |
+| bandish   | bandi       |
+| sangita   | sangi       |
+| sangita   | sangi       |
+| rahul     | rahul       |
+| bhavin    | bhavi       |
+| kaushal   | kaush       |
+| pankaj    | panka       |
+| rajan     | rajan       |
+| bhavin    | bhavi       |
+| mukesh    | mukes       |
+| dilu      | dilu        |
+| sonam     | sonam       |
+| rohit     | rohit       |
+| raj       | raj         |
++-----------+-------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.36 : Display all student in ascending order of their DOB, the ordering must be done on weekday name starting form ‘Monday’, ‘Tuesday’……….
+
+Solution :
+
+mysql> SELECT * from student order by weekday(dob) asc;
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+|  6 | lala      | prasad   | 1980-12-01 | lala.prasad@gmail.com    |
+|  9 | vasant    | khande   | 1992-10-26 | vasant.khande@gmail.com  |
+|  1 | saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com   |
+| 13 | nrupali   | save     | 1981-12-01 | nrupali.save@gmail.com   |
+| 15 | bandish   | karnik   | 1987-12-30 | bandish.karnik@gmail.com |
+|  5 | ruhan     | bagde    | 1984-01-12 | ruhan.bagde@gmail.com    |
+| 11 | neel      | save     | 1975-10-30 | neel.save@gmail.com      |
+| 14 | supriya   | karnik   | 1983-12-15 | supriya.karnik@gmail.com |
+| 17 | sangita   | menon    | 1989-10-26 | sangita.menon@gmail.com  |
+| 10 | nitish    | patil    | 1990-10-26 | nitish.patil@gmail.com   |
+| 20 | kaushal   | patil    | 1982-07-30 | kaushal.patil@gmail.com  |
+| 21 | pankaj    | gandhi   | 1982-07-30 | pankaj.gandhi@gmail.com  |
+| 22 | rajan     | patel    | 1982-07-30 | rajan.patel@gmail.com    |
+| 23 | bhavin    | patel    | 1982-07-30 | bhavin.patel@gmail.com   |
+| 24 | mukesh    | bhavsar  | 1982-07-30 | mukesh.bhavsar@gmail.com |
+| 25 | dilu      | khande   | 1982-07-30 | dilu.khande@gmail.com    |
+| 27 | rohit     | patil    | 1976-12-31 | rohit.patil@gmail.com    |
+|  2 | omkar     | rokde    | 1969-10-25 | omkar.rakde@gmail.com    |
+|  8 | vrushali  | bagde    | 1984-12-29 | vrushali.bagde@gmail.com |
+| 16 | sangita   | karnik   | 1990-12-01 | sangita.karnik@gmail.com |
+| 18 | rahul     | shah     | 1982-06-12 | rahul.shah@gmail.com     |
+| 26 | sonam     | khan     | 1972-05-13 | sonam.khan@gmail.com     |
+|  3 | ulka      | joshi    | 1970-10-25 | ulka.joshi@gmail.com     |
+|  4 | rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com    |
+|  7 | sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com  |
+| 12 | deep      | save     | 1986-11-30 | deep.save@gmail.com      |
+| 19 | bhavin    | patel    | 1983-11-13 | bhavin.patel@gmail.com   |
+| 28 | raj       | bubber   | 1982-02-28 | raj.bubber@gmail.com     |
++----+-----------+----------+------------+--------------------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.37 : Display all student who’s DOB comes in the 4th quarter of the year.
+
+Solution :
+
+mysql> SELECT * from student where quarter(dob)=4 ;
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+|  2 | omkar     | rokde    | 1969-10-25 | omkar.rakde@gmail.com    |
+|  3 | ulka      | joshi    | 1970-10-25 | ulka.joshi@gmail.com     |
+|  4 | rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com    |
+|  6 | lala      | prasad   | 1980-12-01 | lala.prasad@gmail.com    |
+|  7 | sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com  |
+|  8 | vrushali  | bagde    | 1984-12-29 | vrushali.bagde@gmail.com |
+|  9 | vasant    | khande   | 1992-10-26 | vasant.khande@gmail.com  |
+| 10 | nitish    | patil    | 1990-10-26 | nitish.patil@gmail.com   |
+| 11 | neel      | save     | 1975-10-30 | neel.save@gmail.com      |
+| 12 | deep      | save     | 1986-11-30 | deep.save@gmail.com      |
+| 13 | nrupali   | save     | 1981-12-01 | nrupali.save@gmail.com   |
+| 14 | supriya   | karnik   | 1983-12-15 | supriya.karnik@gmail.com |
+| 15 | bandish   | karnik   | 1987-12-30 | bandish.karnik@gmail.com |
+| 16 | sangita   | karnik   | 1990-12-01 | sangita.karnik@gmail.com |
+| 17 | sangita   | menon    | 1989-10-26 | sangita.menon@gmail.com  |
+| 19 | bhavin    | patel    | 1983-11-13 | bhavin.patel@gmail.com   |
+| 27 | rohit     | patil    | 1976-12-31 | rohit.patil@gmail.com    |
++----+-----------+----------+------------+--------------------------+
+17 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.38 : Display all students who were born on ‘Sunday’.
+
+Solution :
+
+mysql> select * from student where dayname(dob)='sunday';
++----+-----------+----------+------------+-------------------------+
+| ID | namefirst | namelast | DOB        | emailID                 |
++----+-----------+----------+------------+-------------------------+
+|  3 | ulka      | joshi    | 1970-10-25 | ulka.joshi@gmail.com    |
+|  4 | rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com   |
+|  7 | sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com |
+| 12 | deep      | save     | 1986-11-30 | deep.save@gmail.com     |
+| 19 | bhavin    | patel    | 1983-11-13 | bhavin.patel@gmail.com  |
+| 28 | raj       | bubber   | 1982-02-28 | raj.bubber@gmail.com    |
++----+-----------+----------+------------+-------------------------+
+6 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.39 : Display the DOB in the give format ‘12th of June 1984’
+
+Solution :
+
+mysql> select dob, date_format(dob,'%dth of %b %Y')AS Needed_Format from student;
++------------+------------------+
+| dob        | Needed_Format    |
++------------+------------------+
+| 1984-06-12 | 12th of Jun 1984 |
+| 1969-10-25 | 25th of Oct 1969 |
+| 1970-10-25 | 25th of Oct 1970 |
+| 1982-10-31 | 31th of Oct 1982 |
+| 1984-01-12 | 12th of Jan 1984 |
+| 1980-12-01 | 01th of Dec 1980 |
+| 1986-12-14 | 14th of Dec 1986 |
+| 1984-12-29 | 29th of Dec 1984 |
+| 1992-10-26 | 26th of Oct 1992 |
+| 1990-10-26 | 26th of Oct 1990 |
+| 1975-10-30 | 30th of Oct 1975 |
+| 1986-11-30 | 30th of Nov 1986 |
+| 1981-12-01 | 01th of Dec 1981 |
+| 1983-12-15 | 15th of Dec 1983 |
+| 1987-12-30 | 30th of Dec 1987 |
+| 1990-12-01 | 01th of Dec 1990 |
+| 1989-10-26 | 26th of Oct 1989 |
+| 1982-06-12 | 12th of Jun 1982 |
+| 1983-11-13 | 13th of Nov 1983 |
+| 1982-07-30 | 30th of Jul 1982 |
+| 1982-07-30 | 30th of Jul 1982 |
+| 1982-07-30 | 30th of Jul 1982 |
+| 1982-07-30 | 30th of Jul 1982 |
+| 1982-07-30 | 30th of Jul 1982 |
+| 1982-07-30 | 30th of Jul 1982 |
+| 1972-05-13 | 13th of May 1972 |
+| 1976-12-31 | 31th of Dec 1976 |
+| 1982-02-28 | 28th of Feb 1982 |
++------------+------------------+
+28 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.40: Display all course_batches who ends on ‘Sunday’.
+
+Solution :
+
+mysql> select * from course_batches where dayname(endson)='sunday';
++----+---------+----------+------------+------------+----------+
+| ID | name    | courseID | starton    | endson     | capacity |
++----+---------+----------+------------+------------+----------+
+|  9 | Batch9  |        4 | 2018-07-01 | 2018-09-30 |       25 |
+| 21 | Batch21 |        1 | 2015-08-01 | 2016-02-28 |       80 |
+| 22 | Batch22 |        2 | 2015-08-01 | 2016-02-28 |       30 |
++----+---------+----------+------------+------------+----------+
+3 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.41 : Display student_phone number in the following format “7032******” for all students.
+
+Solution :
+
+mysql> select number, RPAD(substring(number,1,4),10,'*') from student_phone;
++------------+------------------------------------+
+| number     | RPAD(substring(number,1,4),10,'*') |
++------------+------------------------------------+
+| 7032300034 | 7032******                         |
+| 7032300039 | 7032******                         |
+| 7032300050 | 7032******                         |
+| 7032300027 | 7032******                         |
+| 7032300001 | 7032******                         |
+| 7032300079 | 7032******                         |
+| 7032300081 | 7032******                         |
+| 7032300054 | 7032******                         |
+| 7032300059 | 7032******                         |
+| 7032300086 | 7032******                         |
+| 7032300082 | 7032******                         |
+| 7032300042 | 7032******                         |
+| 7032300055 | 7032******                         |
+| 7032300013 | 7032******                         |
+| 7032300099 | 7032******                         |
+| 7032300023 | 7032******                         |
+| 7032300084 | 7032******                         |
+| 7032300011 | 7032******                         |
+| 7032300066 | 7032******                         |
+| 7032300096 | 7032******                         |
+| 7132300034 | 7132******                         |
+| 7132300039 | 7132******                         |
+| 7132300050 | 7132******                         |
+| 7132300027 | 7132******                         |
+| 7032300001 | 7032******                         |
+| 7132300079 | 7132******                         |
+| 7132300081 | 7132******                         |
+| 7132300054 | 7132******                         |
+| 7132300059 | 7132******                         |
+| 7132300086 | 7132******                         |
+| 7132300082 | 7132******                         |
+| 7132300042 | 7132******                         |
+| 7132300055 | 7132******                         |
+| 7132300055 | 7132******                         |
+| 7132300055 | 7132******                         |
+| 7134567123 | 7134******                         |
+| 7156567123 | 7156******                         |
+| 7156567134 | 7156******                         |
+| 7156563423 | 7156******                         |
+| 7156567183 | 7156******                         |
+| 7146566412 | 7146******                         |
++------------+------------------------------------+
+41 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------
+
+Q.42 : Display student_phone number in the following format “7032****8765” for all students.
+
+Solution :
+
+mysql> select number, concat(substring(number,1,3),'****',substring(number,-3)) AS Needed_Format from student_phone;
++------------+---------------+
+| number     | Needed_Format |
++------------+---------------+
+| 7032300034 | 703****034    |
+| 7032300039 | 703****039    |
+| 7032300050 | 703****050    |
+| 7032300027 | 703****027    |
+| 7032300001 | 703****001    |
+| 7032300079 | 703****079    |
+| 7032300081 | 703****081    |
+| 7032300054 | 703****054    |
+| 7032300059 | 703****059    |
+| 7032300086 | 703****086    |
+| 7032300082 | 703****082    |
+| 7032300042 | 703****042    |
+| 7032300055 | 703****055    |
+| 7032300013 | 703****013    |
+| 7032300099 | 703****099    |
+| 7032300023 | 703****023    |
+| 7032300084 | 703****084    |
+| 7032300011 | 703****011    |
+| 7032300066 | 703****066    |
+| 7032300096 | 703****096    |
+| 7132300034 | 713****034    |
+| 7132300039 | 713****039    |
+| 7132300050 | 713****050    |
+| 7132300027 | 713****027    |
+| 7032300001 | 703****001    |
+| 7132300079 | 713****079    |
+| 7132300081 | 713****081    |
+| 7132300054 | 713****054    |
+| 7132300059 | 713****059    |
+| 7132300086 | 713****086    |
+| 7132300082 | 713****082    |
+| 7132300042 | 713****042    |
+| 7132300055 | 713****055    |
+| 7132300055 | 713****055    |
+| 7132300055 | 713****055    |
+| 7134567123 | 713****123    |
+| 7156567123 | 715****123    |
+| 7156567134 | 715****134    |
+| 7156563423 | 715****423    |
+| 7156567183 | 715****183    |
+| 7146566412 | 714****412    |
++------------+---------------+
+41 rows in set (0.00 sec)
+
+--------------------------------------------************************************-------------------------------------

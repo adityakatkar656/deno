@@ -1,0 +1,277 @@
+Q.1 : Count total number of students.
+
+Solution :
+
+mysql> select count(*) TOTAL from student;
++-------+
+| TOTAL |
++-------+
+|    28 |
++-------+
+1 row in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.2 : Count total number of students who are born in 1986.
+
+Solution :
+
+mysql> select namefirst,emailid, count(*) over() from student where date_format(dob,'%Y')=1986;
++-----------+-------------------------+-----------------+
+| namefirst | emailid                 | count(*) over() |
++-----------+-------------------------+-----------------+
+| sharmin   | sharmin.bagde@gmail.com |               2 |
+| deep      | deep.save@gmail.com     |               2 |
++-----------+-------------------------+-----------------+
+2 rows in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.3 : Count total number of students whose namefirst starts with the letter ‘B’.
+
+Solution :
+
+mysql> select namefirst from student where namefirst like 'b%';
++-----------+
+| namefirst |
++-----------+
+| bandish   |
+| bhavin    |
+| bhavin    |
++-----------+
+3 rows in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.4 : Count total number student who were born in July.
+
+Solution :
+
+mysql> select namefirst from student where date_format(dob,'%M')='july';
++-----------+
+| namefirst |
++-----------+
+| kaushal   |
+| pankaj    |
+| rajan     |
+| bhavin    |
+| mukesh    |
+| dilu      |
++-----------+
+6 rows in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.5 : Display studentID and count the student who is having more than two phones.
+
+Solution :
+
+mysql> SELECT studentID, COUNT(number) AS phone_count FROM student_phone GROUP BY studentID HAVING COUNT(number) > 2;
++-----------+-------------+
+| studentID | phone_count |
++-----------+-------------+
+|         6 |           3 |
+|        13 |           4 |
++-----------+-------------+
+2 rows in set (0.02 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.6 : Count unique universities from student_qualifications table.
+
+Solution :
+
+mysql> select count(distinct university) from student_qualifications;
++----------------------------+
+| count(distinct university) |
++----------------------------+
+|                         11 |
++----------------------------+
+1 row in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.7 : Display the university name and the count of those students who have done ‘BE’
+
+SOlution :
+
+mysql> select distinct university, count(*) from student_qualifications where name='be' group by university;
++-------------------------+----------+
+| university              | count(*) |
++-------------------------+----------+
+| Harvard University      |        9 |
+| University of Florida   |        3 |
+| University of Chicago   |        1 |
+| Columbia University     |        2 |
+| Yale University         |        1 |
+| Pennsylvania University |        2 |
+| University of Michigan  |        1 |
+| University of Ohio      |        1 |
++-------------------------+----------+
+8 rows in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.8 : Count how many students has done ‘BE’.
+
+Solution :
+
+mysql> select count(*) COUNT from student_qualifications where name='be' group by name;
++-------+
+| COUNT |
++-------+
+|    20 |
++-------+
+1 row in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.9 : Count how many students has not done ‘BE’.
+
+Solution :
+
+mysql> select name, count(*) COUNT from student_qualifications where name not in ('be') group by name;
++--------+-------+
+| name   | COUNT |
++--------+-------+
+| 10     |    28 |
+| 12     |    27 |
+| B.Com  |     1 |
+| M.Com. |     5 |
+| B.Com. |     1 |
+| DIP    |     2 |
+| MCA    |     1 |
++--------+-------+
+7 rows in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.10 : Find the maximum marks student got in ‘BE’.
+
+SOlution :
+
+mysql> select max(marks) MAXIMUM from student_qualifications where name='be';
++---------+
+| MAXIMUM |
++---------+
+| 97      |
++---------+
+1 row in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.11 : Find the minimum marks student got in ‘BE’.
+
+Solution :
+
+mysql> select min(marks) MINIMUM from student_qualifications where name='be';
++---------+
+| MINIMUM |
++---------+
+| 57      |
++---------+
+1 row in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.12 : Count how many course_batches have started on ’2016-02-01’.
+
+Solution :
+
+mysql> select name, starton from course_batches where starton='2016-02-01';
++--------+------------+
+| name   | starton    |
++--------+------------+
+| Batch1 | 2016-02-01 |
+| Batch2 | 2016-02-01 |
+| Batch3 | 2016-02-01 |
++--------+------------+
+3 rows in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.13 : Count the number of students who have more than 60% in ‘BE’.
+
+Solution : ASSUMING OUT OF 100 MARKS
+
+mysql> select studentid, name, university, marks from student_qualifications where marks>=60 and name='be';
++-----------+------+-------------------------+-------+
+| studentid | name | university              | marks |
++-----------+------+-------------------------+-------+
+|         1 | BE   | Harvard University      | 68    |
+|         3 | BE   | University of Florida   | 67    |
+|         6 | BE   | University of Chicago   | 87    |
+|         7 | BE   | Harvard University      | 97    |
+|         9 | BE   | Columbia University     | 87    |
+|        13 | BE   | University of Florida   | 68    |
+|        15 | BE   | Pennsylvania University | 65    |
+|        16 | BE   | University of Michigan  | 76    |
+|        17 | BE   | University of Ohio      | 68    |
+|        18 | BE   | Harvard University      | 75    |
+|        19 | BE   | University of Florida   | 61    |
+|        20 | BE   | Columbia University     | 72    |
+|        21 | BE   | Harvard University      | 68    |
+|        22 | BE   | Harvard University      | 68    |
+|        23 | BE   | Harvard University      | 68    |
+|        24 | BE   | Harvard University      | 97    |
+|        25 | BE   | Harvard University      | 97    |
+|        26 | BE   | Harvard University      | 68    |
+|        27 | BE   | Pennsylvania University | 62    |
++-----------+------+-------------------------+-------+
+19 rows in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.14 : Count the number of students who have more than 60% in ‘BE’ and done from ‘Harvard university’.
+
+Solution :
+
+mysql> select count(*) COUNT from student_qualifications where name='be'and marks>60 and university='Harvard University';
++-------+
+| COUNT |
++-------+
+|     9 |
++-------+
+1 row in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.15 : Count number of courses.
+
+Solution :
+
+mysql> select count(*) COUNT from course;
++-------+
+| COUNT |
++-------+
+|     7 |
++-------+
+1 row in set (0.02 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.16 : Count how many distinct universities from student_qualifications table.
+
+Solution :
+
+mysql> select count(distinct university) COUNT from student_qualifications;
++-------+
+| COUNT |
++-------+
+|    11 |
++-------+
+1 row in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Q.17 : Find the maximum marks any student has got in “BE”.
+
+Solution :
+
+mysql> select max(marks) MAXIMUM from student_qualifications where name='be';
++---------+
+| MAXIMUM |
++---------+
+| 97      |
++---------+
+1 row in set (0.00 sec)

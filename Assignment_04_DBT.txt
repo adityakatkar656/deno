@@ -1,0 +1,222 @@
+Q.1 :List all students.
+
+Solution :
+
+mysql> select concat(namefirst, namelast) AS Student_Full_Name from student;
++-------------------+
+| Student_Full_Name |
++-------------------+
+| saleelbagde       |
+| omkarrokde        |
+| ulkajoshi         |
+| rahulpatil        |
+| ruhanbagde        |
+| lalaprasad        |
+| sharminbagde      |
+| vrushalibagde     |
+| vasantkhande      |
+| nitishpatil       |
+| neelsave          |
+| deepsave          |
+| nrupalisave       |
+| supriyakarnik     |
+| bandishkarnik     |
+| sangitakarnik     |
+| sangitamenon      |
+| rahulshah         |
+| bhavinpatel       |
+| kaushalpatil      |
+| pankajgandhi      |
+| rajanpatel        |
+| bhavinpatel       |
+| mukeshbhavsar     |
+| dilukhande        |
+| sonamkhan         |
+| rohitpatil        |
+| rajbubber         |
++-------------------+
+28 rows in set (0.00 sec)
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Q.2 : List namefirst, namelast of all students in ascending order of namefirst.
+
+Solution :
+
+mysql> select namefirst, namelast from student order by namefirst asc;
++-----------+----------+
+| namefirst | namelast |
++-----------+----------+
+| bandish   | karnik   |
+| bhavin    | patel    |
+| bhavin    | patel    |
+| deep      | save     |
+| dilu      | khande   |
+| kaushal   | patil    |
+| lala      | prasad   |
+| mukesh    | bhavsar  |
+| neel      | save     |
+| nitish    | patil    |
+| nrupali   | save     |
+| omkar     | rokde    |
+| pankaj    | gandhi   |
+| rahul     | patil    |
+| rahul     | shah     |
+| raj       | bubber   |
+| rajan     | patel    |
+| rohit     | patil    |
+| ruhan     | bagde    |
+| saleel    | bagde    |
+| sangita   | karnik   |
+| sangita   | menon    |
+| sharmin   | bagde    |
+| sonam     | khan     |
+| supriya   | karnik   |
+| ulka      | joshi    |
+| vasant    | khande   |
+| vrushali  | bagde    |
++-----------+----------+
+28 rows in set (0.00 sec)
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Q.3 : List namefirst, namelast, DOB, and emailed for the first 5 students.
+
+Solution :
+
+mysql> select namefirst, namelast,dob, emailid from student limit 5;
++-----------+----------+------------+------------------------+
+| namefirst | namelast | dob        | emailid                |
++-----------+----------+------------+------------------------+
+| saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com |
+| omkar     | rokde    | 1969-10-25 | omkar.rakde@gmail.com  |
+| ulka      | joshi    | 1970-10-25 | ulka.joshi@gmail.com   |
+| rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com  |
+| ruhan     | bagde    | 1984-01-12 | ruhan.bagde@gmail.com  |
++-----------+----------+------------+------------------------+
+5 rows in set (0.00 sec)
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Q.4 : Display student information of the studentID is 1, 2, 5 or 7.
+
+Solution :
+
+mysql> select namefirst, namelast,dob, emailid from student where id IN (1,2,5,7);
++-----------+----------+------------+-------------------------+
+| namefirst | namelast | dob        | emailid                 |
++-----------+----------+------------+-------------------------+
+| saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com  |
+| omkar     | rokde    | 1969-10-25 | omkar.rakde@gmail.com   |
+| ruhan     | bagde    | 1984-01-12 | ruhan.bagde@gmail.com   |
+| sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com |
++-----------+----------+------------+-------------------------+
+4 rows in set (0.00 sec)
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Q.5 : List namefirst, namelast, and emailed of student whose studentID is not 5, 10, 15, display first 7 rows only
+
+Solution :
+
+mysql> select namefirst, namelast,dob, emailid from student where id NOT IN (5,10,15) limit 7;
++-----------+----------+------------+--------------------------+
+| namefirst | namelast | dob        | emailid                  |
++-----------+----------+------------+--------------------------+
+| saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com   |
+| omkar     | rokde    | 1969-10-25 | omkar.rakde@gmail.com    |
+| ulka      | joshi    | 1970-10-25 | ulka.joshi@gmail.com     |
+| rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com    |
+| lala      | prasad   | 1980-12-01 | lala.prasad@gmail.com    |
+| sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com  |
+| vrushali  | bagde    | 1984-12-29 | vrushali.bagde@gmail.com |
++-----------+----------+------------+--------------------------+
+7 rows in set (0.00 sec)
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Q.6 : list first two faculty details only.
+
+Solution :
+
+mysql> select * from faculty limit 2;
++----+-----------+----------+------------+------------------------+
+| ID | namefirst | namelast | DOB        | emailID                |
++----+-----------+----------+------------+------------------------+
+|  1 | prachi    | gupta    | 1974-06-12 | prachi.gupta@gmail.com |
+|  2 | ketan     | shukla   | 1972-10-25 | ketan.shukla@gmail.com |
++----+-----------+----------+------------+------------------------+
+2 rows in set (0.00 sec)
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Q.7 : List all student_phone number in ascending order of phone number.
+
+Solution :
+
+mysql> select number from student_phone order by number asc;
++------------+
+| number     |
++------------+
+| 7032300001 |
+| 7032300001 |
+| 7032300011 |
+| 7032300013 |
+| 7032300023 |
+| 7032300027 |
+| 7032300034 |
+| 7032300039 |
+| 7032300042 |
+| 7032300050 |
+| 7032300054 |
+| 7032300055 |
+| 7032300059 |
+| 7032300066 |
+| 7032300079 |
+| 7032300081 |
+| 7032300082 |
+| 7032300084 |
+| 7032300086 |
+| 7032300096 |
+| 7032300099 |
+| 7132300027 |
+| 7132300034 |
+| 7132300039 |
+| 7132300042 |
+| 7132300050 |
+| 7132300054 |
+| 7132300055 |
+| 7132300055 |
+| 7132300055 |
+| 7132300059 |
+| 7132300079 |
+| 7132300081 |
+| 7132300082 |
+| 7132300086 |
+| 7134567123 |
+| 7146566412 |
+| 7156563423 |
+| 7156567123 |
+| 7156567134 |
+| 7156567183 |
++------------+
+41 rows in set (0.00 sec)
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Q.8 : Display the student_address whose studentID is 2, 4, 6 or 10 in descending order of studentID.
+
+Solution :
+
+mysql> select address from student_address where id IN (2,4,6,10) order by address desc;
++-------------------------------------------------------------+
+| address                                                     |
++-------------------------------------------------------------+
+| 7720 Covington Rd, Pink Stand, TN, San Francisco, 37188     |
+| 7710 Covington Rd , New State Road, New York, 37188         |
+| 2263 Ga 17 Hwy N, Millen, GA, Atlanta, 30442                |
+| 165 Village Dr., P.O. Box 3700, Oakland, TN, Oakland, 38060 |
++-------------------------------------------------------------+
+4 rows in set (0.00 sec)
+
+-----------------------------------------*****************************------------------------------------------------
